@@ -1,43 +1,78 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import MapView, { Marker, Callout} from 'react-native-maps';
 
 import {  View } from '../components/Themed';
 
 export default function MapScreen() {
 
- 
+  const [latitude,setLatitude] = useState(-22.913947865776727)
+  const [longitude,setLongitude] = useState(-47.068129919628475)
 
+  const objetos = [
+    {
+      coordinate: {
+        latitude: -22.916108012868833,
+        longitude: 47.068582242488816,
+      },
+      name: 'Hospital Municipal Dr. Mário Gatti',
+    },
+    {
+      coordinate: {
+        latitude: -22.-22.915198859112163,
+        longitude: -47.067423528239836,
+      },
+      name: 'Unidade Pediátrica Mário Gattinho',
+    },
+    {
+      coordinate: {
+        latitude: -22.914467578851617,
+        longitude: -47.06662959439167,
+      },
+      name: 'Instituto Amor e Vida',
+    },
+    {
+      coordinate: {
+        latitude: -22.913947865776727,
+        longitude: -47.068129919628475,
+      },
+      name: 'Escola e Faculdade de Tecnologia Senai Roberto Mange',
+    },
+    {
+      coordinate: {
+        latitude: -22.915080273402552,
+        longitude: -47.06863588665613,
+      },
+      name: 'Teatro SESI Campinas Amoreiras',
+    },
+  ];
 
-  const lista = [ {lat: -22.913947865776727,long: -47.068129919628475,nome:'senai'}, 
-    {lat:-22.86336876561494, long: -47.21348983091278,nome:'shopping hortolândia'},
-    {lat:-22.892263725154884,long: -47.02742494440435,nome:'shopping iguatemi'},
-     {lat:-22.847232240041055, long:-47.0628527174211,nome:'shopping dom pedro'},
-    {lat:-22.925073512554206, long:-47.12749971741982,nome:'shopping bandeiras'
-  }]
-
-  
   return (
     <View style={styles.container}>
-        
      <MapView style={styles.map}
       initialRegion={{
-        latitude:-22.913947865776727 ,
+        latitude: -22.913947865776727,
         longitude: -47.068129919628475,
         latitudeDelta: 0.003,
         longitudeDelta: 0.003,
     }}
+
   >
-    
-    {lista.map((item) => (
-    <Marker key={item.nome} coordinate={{ latitude : item.lat , longitude :item.long }}>
-      <Callout>
-        <Text>{item.nome}</Text>
-      </Callout>
-    </Marker>
+          {objetos.map((item) => (    
+        <Marker coordinate={{ latitude : item.coordinate.latitude , longitude : item.coordinate.longitude}}>
+          <Callout>
+            <Text>
+              {item.name}
+            </Text>
+          </Callout>
+
+        </Marker>
     ))}
 
-</MapView>
+{/* teste */}
+        
+
+  </MapView>
     </View>
   );
 }
