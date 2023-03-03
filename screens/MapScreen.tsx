@@ -9,6 +9,44 @@ export default function MapScreen() {
   const [latitude,setLatitude] = useState(-22.913947865776727)
   const [longitude,setLongitude] = useState(-47.068129919628475)
 
+  const objetos = [
+    {
+      coordinate: {
+        latitude: -22.916108012868833,
+        longitude: 47.068582242488816,
+      },
+      name: 'Hospital Municipal Dr. Mário Gatti',
+    },
+    {
+      coordinate: {
+        latitude: -22.-22.915198859112163,
+        longitude: -47.067423528239836,
+      },
+      name: 'Unidade Pediátrica Mário Gattinho',
+    },
+    {
+      coordinate: {
+        latitude: -22.914467578851617,
+        longitude: -47.06662959439167,
+      },
+      name: 'Instituto Amor e Vida',
+    },
+    {
+      coordinate: {
+        latitude: -22.913947865776727,
+        longitude: -47.068129919628475,
+      },
+      name: 'Escola e Faculdade de Tecnologia Senai Roberto Mange',
+    },
+    {
+      coordinate: {
+        latitude: -22.915080273402552,
+        longitude: -47.06863588665613,
+      },
+      name: 'Teatro SESI Campinas Amoreiras',
+    },
+  ];
+
   return (
     <View style={styles.container}>
      <MapView style={styles.map}
@@ -19,11 +57,20 @@ export default function MapScreen() {
         longitudeDelta: 0.003,
     }}
   >
-    <Marker coordinate={{ latitude : latitude , longitude : longitude }}>
-      <Callout>
-        <Text>SENAI</Text>
-      </Callout>
-    </Marker>
+          {objetos.map((item) => (    
+        <Marker coordinate={{ latitude : item.coordinate.latitude , longitude : item.coordinate.longitude}}>
+          <Callout>
+            <Text>
+              {item.name}
+            </Text>
+          </Callout>
+
+        </Marker>
+    ))}
+
+
+
+        
 
   </MapView>
     </View>
