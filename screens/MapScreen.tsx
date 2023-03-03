@@ -56,6 +56,7 @@ export default function MapScreen() {
         latitudeDelta: 0.003,
         longitudeDelta: 0.003,
     }}
+
   >
           {objetos.map((item) => (    
         <Marker coordinate={{ latitude : item.coordinate.latitude , longitude : item.coordinate.longitude}}>
@@ -68,8 +69,7 @@ export default function MapScreen() {
         </Marker>
     ))}
 
-
-
+{/* teste */}
         
 
   </MapView>
